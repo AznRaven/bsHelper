@@ -5,7 +5,7 @@ export default function Accordion(prop) {
       <div class="accordion accordion-flush" id="accordionFlushExample">
         {prop.category.map((x,index) => {
           return (
-            <div class="accordion-item">
+            <div key={index} class="accordion-item">
               <h2 class="accordion-header">
                 <button
                   class="accordion-button collapsed"
