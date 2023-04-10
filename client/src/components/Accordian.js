@@ -1,9 +1,8 @@
 import ReactDOMServer from "react-dom/server";
-import CircularJSON from "circular-json";
 
 export default function Accordion(props) {
   const numItems = props.count;
-  console.log("count", numItems);
+  //   console.log("count", numItems);
 
   const accordionItems = [];
 
@@ -45,19 +44,27 @@ export default function Accordion(props) {
   const handleCopyClick = () => {
     navigator.clipboard.writeText(codeBlock);
     // alert("Code copied to clipboard!");
-
   };
 
   return (
     <>
+    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <button
+        onClick={handleCopyClick}
+        type="button"
+        class="btn btn-outline-light mb-3"
+      >
+        Copy
+      </button>
+    </div>
+      
+
       {accordionItems}
       <br />
       <div className="code-box">
         <code>
           <pre>{codeBlock}</pre>
         </code>
-        {/* <button onClick={handleCopyClick}>Copy</button> */}
-        <button onClick={handleCopyClick} type="button" class="btn btn-outline-light">Copy</button>
       </div>
     </>
   );

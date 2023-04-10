@@ -1,69 +1,95 @@
 import Accordion from "./Accordian";
 import { useState } from "react";
+import Alert from "./Alert";
+import AccordionItem from "./AccordianItem";
+import NavTabHead from "./NavTabHead";
+import NavTabAlertBody from "./NavTabAlertBody";
+import NavTabHead1 from "./NavTabHead1";
+import NavTabAccordianBody from "./NavTabAccordianBody";
+import NavTabBody from "./NavTabBody";
 export default function BsItems() {
   let [count, setCount] = useState(3);
-  let category = [
-    {
-      name: "Components",
-      items: [
-        "Accordion",
-        "Alerts",
-        "Badge",
-        "Breadcrumb",
-        "Buttons",
-        "Button Group",
-        "Card",
-        "Carousel",
-        "Close Button",
-        "Collapse",
-        "Dropdowns",
-        "List Group",
-        "Modal",
-        "Navbar",
-        "Navs & Tabs",
-        "Offcanvas",
-        "Pagination",
-        "Placeholders",
-        "Popovers",
-        "Progress",
-        "Scrollspy",
-        "Spinners",
-        "Toasts",
-        "Tooltips",
-      ],
-    },
-    {
-      name: "Content",
-      items: [],
-    },
-    {
-      name: "Customize",
-      items: [],
-    },
-    {
-      name: "Forms",
-      items: [],
-    },
-    {
-      name: "Helpers",
-      items: [],
-    },
-    {
-      name: "Layout",
-      items: [],
-    },
-    {
-      name: "Utilities",
-      items: [],
-    },
-  ];
+  // let category = [
+  //   {
+  //     name: "Components",
+  //     items: [
+  //       "Accordion",
+  //       "Alerts",
+  //       "Badge",
+  //       "Breadcrumb",
+  //       "Buttons",
+  //       "Button Group",
+  //       "Card",
+  //       "Carousel",
+  //       "Close Button",
+  //       "Collapse",
+  //       "Dropdowns",
+  //       "List Group",
+  //       "Modal",
+  //       "Navbar",
+  //       "Navs & Tabs",
+  //       "Offcanvas",
+  //       "Pagination",
+  //       "Placeholders",
+  //       "Popovers",
+  //       "Progress",
+  //       "Scrollspy",
+  //       "Spinners",
+  //       "Toasts",
+  //       "Tooltips",
+  //     ],
+  //   },
+  //   {
+  //     name: "Content",
+  //     items: [],
+  //   },
+  //   {
+  //     name: "Customize",
+  //     items: [],
+  //   },
+  //   {
+  //     name: "Forms",
+  //     items: [],
+  //   },
+  //   {
+  //     name: "Helpers",
+  //     items: [],
+  //   },
+  //   {
+  //     name: "Layout",
+  //     items: [],
+  //   },
+  //   {
+  //     name: "Utilities",
+  //     items: [],
+  //   },
+  // ];
   // const accordionArr = document.querySelector('.mAccordian');
+  const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
+  const appendAlert = (message, type) => {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = [
+      `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+      `   <div>${message}</div>`,
+      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      "</div>",
+    ].join("");
 
+    alertPlaceholder.append(wrapper);
+  };
+
+  const alertTrigger = document.getElementById("liveAlertBtnSuccess");
+  if (alertTrigger) {
+    alertTrigger.addEventListener("click", () => {
+      appendAlert("Nice, you triggered this alert message!", "success");
+    });
+  }
   return (
     <>
       <div className="">
         <div class="accordion accordion-flush" id="accordionFlushExample">
           {/* Components */}
+          {/* <AccordionItem name={"Accordion"} /> */}
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button
@@ -85,9 +111,9 @@ export default function BsItems() {
               {/* Body */}
 
               <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
+                {/* <li class="nav-item" role="presentation">
                   <button
-                    class="nav-link active"
+                    class="nav-link"
                     id="Accordian-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#Accordian-tab-pane"
@@ -98,166 +124,47 @@ export default function BsItems() {
                   >
                     Accordian
                   </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button
-                    class="nav-link"
-                    id="profile-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#profile-tab-pane"
-                    type="button"
-                    role="tab"
-                    aria-controls="profile-tab-pane"
-                    aria-selected="false"
-                  >
-                    Profile
-                  </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button
-                    class="nav-link"
-                    id="contact-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#contact-tab-pane"
-                    type="button"
-                    role="tab"
-                    aria-controls="contact-tab-pane"
-                    aria-selected="false"
-                  >
-                    Contact
-                  </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button
-                    class="nav-link"
-                    id="disabled-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#disabled-tab-pane"
-                    type="button"
-                    role="tab"
-                    aria-controls="disabled-tab-pane"
-                    aria-selected="false"
-                    disabled
-                  >
-                    Disabled
-                  </button>
-                </li>
+                </li> */}
+                <NavTabHead1 name={"Accordian"}/>
+                <NavTabHead name={"Alert"} />
+                <NavTabHead name={"Badge"} />
+                <NavTabHead name={"Breadcrumb"} />
+                <NavTabHead name={"Buttons"} />
+                <NavTabHead name={"Button-Group"} />
+                <NavTabHead name={"Card"} />
+                <NavTabHead name={"Carousel"} />
+                <NavTabHead name={"Close Button"} />
+                <NavTabHead name={"Collapse"} />
+                <NavTabHead name={"Dropdowns"} />
+                <NavTabHead name={"List-Group"} />
+                <NavTabHead name={"Modal"} />
+                <NavTabHead name={"Navbar"} />
+                <NavTabHead name={"Navs&Tabs"} />
+                <NavTabHead name={"OffCanvas"} />
+                <NavTabHead name={"Pagination"} />
+                <NavTabHead name={"Placeholders"} />
+                <NavTabHead name={"Popovers"} />
+                <NavTabHead name={"Progress"} />
+                <NavTabHead name={"Scrollspy"} />
+                <NavTabHead name={"Spinners"} />
+                <NavTabHead name={"Toasts"} />
+                <NavTabHead name={"Tooltips"} />
               </ul>
               <div class="tab-content" id="myTabContent">
-                <div
-                  class="tab-pane fade show active p-2 bg-dark"
-                  id="Accordian-tab-pane"
-                  role="tabpanel"
-                  aria-labelledby="Accordian-tab"
-                  tabindex="0"
-                >
-                  {/* Show Accordion*/}
-                  {
-                    <>
-                      <div class="form-floating mb-3">
-                        <input
-                          value={count}
-                          type="email"
-                          class="form-control"
-                          id="floatingInput"
-                          placeholder="name@example.com"
-                          onChange={(e) => setCount(e.target.value)}
-                        />
-                        <label for="floatingInput" className="fs-5">Enter Count</label>
-                      </div>
-                      <div
-                        class="accordion accordion-flush"
-                        id="accordionFlushTest"
-                      >
-                        <Accordion count={count} />
-                      </div>
-                    </>
-                  }
-                </div>
-                <div
-                  class="tab-pane fade"
-                  id="profile-tab-pane"
-                  role="tabpanel"
-                  aria-labelledby="profile-tab"
-                  tabindex="0"
-                >
-                  ...
-                </div>
-                <div
-                  class="tab-pane fade"
-                  id="contact-tab-pane"
-                  role="tabpanel"
-                  aria-labelledby="contact-tab"
-                  tabindex="0"
-                >
-                  ...
-                </div>
-                <div
-                  class="tab-pane fade"
-                  id="disabled-tab-pane"
-                  role="tabpanel"
-                  aria-labelledby="disabled-tab"
-                  tabindex="0"
-                >
-                  ...
-                </div>
+                
+                <NavTabAccordianBody count={count} setCount={setCount}/>
+                <NavTabAlertBody/>
+                {/* <NavTabBody name={Alert}/> */}
+
+                
               </div>
             </div>
           </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseTwo"
-                aria-expanded="false"
-                aria-controls="flush-collapseTwo"
-              >
-                Accordion Item #2
-              </button>
-            </h2>
-            <div
-              id="flush-collapseTwo"
-              class="accordion-collapse collapse"
-              data-bs-parent="#accordionFlushExample"
-            >
-              <div class="accordion-body">
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                second item's accordion body. Let's imagine this being filled
-                with some actual content.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseThree"
-                aria-expanded="false"
-                aria-controls="flush-collapseThree"
-              >
-                Accordion Item #3
-              </button>
-            </h2>
-            <div
-              id="flush-collapseThree"
-              class="accordion-collapse collapse"
-              data-bs-parent="#accordionFlushExample"
-            >
-              <div class="accordion-body">
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                third item's accordion body. Nothing more exciting happening
-                here in terms of content, but just filling up the space to make
-                it look, at least at first glance, a bit more representative of
-                how this would look in a real-world application.
-              </div>
-            </div>
-          </div>
+          <AccordionItem name={"Customize"} />
+          <AccordionItem name={"Forms"} />
+          <AccordionItem name={"Helpers"} />
+          <AccordionItem name={"Layout"} />
+          <AccordionItem name={"Utilities"} />
         </div>
       </div>
     </>
