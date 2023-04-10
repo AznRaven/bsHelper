@@ -13,11 +13,11 @@ export default function Home() {
       <div>
         <Nav/>
       </div>
-      <div className="d-flex">
-        <div className="bsitems border rounded-3 col-2 m-3"><BsItems/></div>
-        <div className="bsitems border rounded-3 col-9 m-3">Main
-        
-        </div>
+      <br/>
+
+      <div className="d-flex justify-content-center ">
+        <div className="bsitems border rounded-3 col-11 fs-3"><BsItems/></div>
+        {/* <div className="bsitems border rounded-3 col-9 m-3">Main</div> */}
       </div>
     </>
   );
